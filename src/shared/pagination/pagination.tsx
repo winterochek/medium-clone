@@ -9,6 +9,8 @@ type Props = {
 export default function PaginationComponent({ currentPage, pagesCount, action }: Props) {
    const array = new Array(pagesCount).fill('page')
    const isActive = (page: number) => page === currentPage
+
+   if (pagesCount === 1) return null
    return (
       <div className='flex flex-row items-center justify-start gap-2'>
          {array.map((_, i) => {
