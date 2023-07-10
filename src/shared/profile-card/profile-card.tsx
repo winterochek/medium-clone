@@ -5,22 +5,30 @@ import clsx from 'clsx'
 import { useMutation } from 'react-query'
 import { Follow, UnFollow } from '../../api/profiles'
 import { TOKEN_KEY, useLocalStorage } from '../lib'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
    profile: ProfileInterface
+   isOwn: boolean
 }
 
-export default function ProfileCardComponent({ profile }: Props) {
+export default function ProfileCardComponent({ profile, isOwn }: Props) {
    const [followed, setFollowed] = useState(!!profile?.following)
+   const navigate = useNavigate()
    const { get } = useLocalStorage()
    const { mutate } = useMutation({ mutationFn: followed ? UnFollow : Follow })
 
    const variant = () => (followed ? 'outline' : 'green')
-   const btnText = () => (followed ? 'unfollow' : 'follow')
+   const btnText = () => (isOwn ? 'edit' : followed ? 'unfollow' : 'follow')
 
-   const handleFollow = () => {
-      setFollowed(v => !v)
-      mutate({ username: profile?.username || '', token: get(TOKEN_KEY) || '' })
+   const handleClick = () => {
+      if (isOwn) {
+         navigate('/settings')
+      }
+      if (!isOwn) {
+         setFollowed(v => !v)
+         mutate({ username: profile?.username || '', token: get(TOKEN_KEY) || '' })
+      }
    }
    return (
       <div className='flex flex-row items-center py-2 px-8 rounded-lg bg-white h-40 shadow-lg'>
@@ -42,7 +50,7 @@ export default function ProfileCardComponent({ profile }: Props) {
             </p>
          </div>
          <div className='flex items-center justify-center'>
-            <Button onClick={handleFollow} variant={variant()}>
+            <Button onClick={handleClick} variant={variant()}>
                {btnText()}
             </Button>
          </div>

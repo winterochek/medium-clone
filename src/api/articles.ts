@@ -29,6 +29,46 @@ export async function Articles({
    return response.json()
 }
 
+export async function ArticlesWithFilterParams({
+   token,
+   page = 1,
+   author,
+   liked,
+   tag,
+}: {
+   token: string
+   page?: number
+   author?: string
+   liked?: string
+   tag?: string
+}): Promise<MultipleArticlesResponseInterface> {
+   const limit = 5
+   const offset = page * limit - 5
+   const url = () => {
+      let base = `${baseURL}/articles?limit=${limit}&offset=${offset}`
+      if (author) {
+         base = `${base}&author=${author}`
+      }
+      if (liked) {
+         base = `${base}&favorited=${liked}`
+      }
+      if (tag) {
+         base = `${base}&tag=${tag}`
+      }
+      return base
+   }
+   const response = await fetch(url(), {
+      method: 'GET',
+      headers: {
+         Authorization: `Token ${token || ''}`,
+      },
+   })
+   if (!response.ok) {
+      throw new Error('Fetching articles failed')
+   }
+   return response.json()
+}
+
 export async function CreateArticle({
    data,
    token,

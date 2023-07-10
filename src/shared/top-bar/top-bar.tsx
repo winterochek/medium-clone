@@ -29,7 +29,7 @@ export default function TopBarComponent() {
             <NavItem isActive={pathname === '/create'} to={'/create'} title={'Publish'} />
             <NavItem isActive={pathname === '/settings'} to={'/settings'} title={'Settings'} />
             <NavItem
-               isActive={pathname.includes('profile')}
+               isActive={pathname === `/profile/${user.username}`}
                to={`/profile/${user.username}`}
                title={`${'Profile'}`}
             />
