@@ -11,7 +11,6 @@ export default function FeedPage() {
    const [feed, setFeed] = useState(FeedEnum.GLOBAL)
    const { get, set } = useLocalStorage()
    const [page, setPage] = useState<number>(Number(get(PAGE_KEY)) || 1)
-   console.log('setState')
    const isPersonal = feed === FeedEnum.PERSONAL
    const { data, isLoading, isSuccess, isError, error } = useQuery({
       queryKey: ['articles', isPersonal, page],

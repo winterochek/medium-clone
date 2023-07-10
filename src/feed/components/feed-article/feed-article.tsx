@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArticleInterface } from '../../../models'
 import UserInfo from './user-info'
+import { TagList } from '../../../shared/tag-list'
 
 type Props = {
    article: ArticleInterface
@@ -19,9 +20,7 @@ export default function FeedArticleComponent({ article }: Props) {
             >
                {article.title}
             </h3>
-            <p className='text-gray-500 line-clamp-3'>
-               {article.body}
-            </p>
+            <p className='text-gray-500 line-clamp-3'>{article.body}</p>
          </div>
          <div className='flex flex-row justify-between items-center'>
             <Link
@@ -30,7 +29,7 @@ export default function FeedArticleComponent({ article }: Props) {
             >
                read more...
             </Link>
-            <span>tags</span>
+            <TagList tags={article.tagList} />
          </div>
       </div>
    )
