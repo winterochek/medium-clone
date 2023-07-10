@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import { Articles } from '../api'
 import { Loading } from '../shared/loading'
 import { Pagination } from '../shared/pagination'
+import { ExploreTags } from './components/explore-tags'
 
 export default function FeedPage() {
    const [feed, setFeed] = useState(FeedEnum.GLOBAL)
@@ -23,6 +24,7 @@ export default function FeedPage() {
       set(PAGE_KEY, page)
       setPage(() => page)
    }
+
    let content: JSX.Element
 
    if (isLoading) {
@@ -36,6 +38,7 @@ export default function FeedPage() {
    if (isSuccess) {
       content = (
          <>
+            <ExploreTags />
             {data?.articles?.map(article => (
                <FeedArticle key={article.slug} article={article} />
             ))}
@@ -56,6 +59,7 @@ export default function FeedPage() {
             <h2 className='text-black mx-auto font-medium text-center py-2'>
                No articles available. Consider following anyone! 🐢
             </h2>
+            <ExploreTags />
          </>
       )
    }

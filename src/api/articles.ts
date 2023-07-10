@@ -42,8 +42,8 @@ export async function ArticlesWithFilterParams({
    liked?: string
    tag?: string
 }): Promise<MultipleArticlesResponseInterface> {
-   const limit = 5
-   const offset = page * limit - 5
+   const limit = LIMIT
+   const offset = page * limit - 10
    const url = () => {
       let base = `${baseURL}/articles?limit=${limit}&offset=${offset}`
       if (author) {

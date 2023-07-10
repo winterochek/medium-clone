@@ -6,6 +6,7 @@ import { CreateArticle, EditArticle, SingleArticle } from './article'
 import { Settings } from './settings'
 import { Profile } from './profile'
 import { Layout } from './shared/layout'
+import { TagFeed } from './tag-feed'
 
 function App() {
    const queryClient = new QueryClient()
@@ -21,6 +22,7 @@ function App() {
                <Route path='/articles/:slug' element={<SingleArticle />} />
                <Route path='/articles/:slug/edit' element={<EditArticle />} />
                <Route path='/profile/:slug' element={<Profile />} />
+               <Route path='/tag/:slug' element={<TagFeed />} />
             </Route>
          </Routes>
       </QueryClientProvider>

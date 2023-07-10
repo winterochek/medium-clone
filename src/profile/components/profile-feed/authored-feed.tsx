@@ -35,7 +35,7 @@ export default function AuthoredFeedComponent({ profile }: { profile: ProfileInt
             <div className='mt-4'>
                <Pagination
                   currentPage={page}
-                  pagesCount={Math.ceil(data?.articlesCount / 5)}
+                  pagesCount={Math.ceil(data?.articlesCount / 10)}
                   action={handlePageAction}
                />
             </div>
