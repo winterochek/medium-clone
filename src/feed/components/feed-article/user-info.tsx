@@ -63,7 +63,12 @@ export default function UserInfo({
                <p className='text-gray-500'>{date}</p>
             </div>
          </div>
-         <Button onClick={handleLike} variant={getVariant()} disabled={!user}>
+         <Button
+            onClick={handleLike}
+            variant={getVariant()}
+            disabled={!user}
+            classname={clsx('', !user && 'border-none bg-none')}
+         >
             <div className='flex flex-row items-center gap-1'>
                {!isError && (
                   <>
