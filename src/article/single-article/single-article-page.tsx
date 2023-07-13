@@ -28,8 +28,8 @@ export default function SingleArticlePage() {
       <div className='flex flex-col gap-5 pb-8'>
          {data?.article ? (
             <ArticleCard
-               article={data?.article}
-               isOwn={data?.article?.author.username === user?.username}
+               article={data.article}
+               isOwn={data.article?.author.username === user?.username}
                isAnonymous={!user}
             />
          ) : null}

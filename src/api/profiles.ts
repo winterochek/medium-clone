@@ -6,13 +6,17 @@ export async function Profile({
    token,
 }: {
    username: string
-   token: string
+   token?: string
 }): Promise<{ profile: ProfileInterface }> {
    const url = `${baseURL}/profiles/${username}`
-   const response = await fetch(url, {
+   const options: any = {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json', Authorization: `Token ${token}` },
-   })
+      headers: { 'Content-Type': 'application/json', Authorization: undefined },
+   }
+   if (token) {
+      options.headers.Authorization = `Token ${token}`
+   }
+   const response = await fetch(url, options)
    if (!response.ok) {
       throw new Error(`Fetching of ${username} info failed`)
    }

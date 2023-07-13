@@ -69,7 +69,7 @@ export default function SettingsFormComponent({ initialValue }: Props) {
                   <Label title='Biography'>
                      <Input field='bio' placeholder='describe yourself' />
                   </Label>
-                  <Button disabled={disabled} type='submit' variant='green'>
+                  <Button disabled={disabled} type='submit' variant='green' classname='ml-auto w-20'>
                      <div className='w-full h-full flex flex-row items-center justify-center gap-1'>
                         {isLoading && <Spinner width={2} height={2} />}
                         Update

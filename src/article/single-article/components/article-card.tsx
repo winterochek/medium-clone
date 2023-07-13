@@ -50,9 +50,13 @@ export default function ArticleCard({
       <div className='bg-green-500 py-4 px-4 rounded-lg flex flex-col gap-4'>
          <h1 className='text-white font-semibold text-3xl text-justify'>{article?.title}</h1>
          <div className='flex flex-row gap-4 items-center justify-start'>
-            <Avatar width={40} height={40} src={article?.author.image} />
+            <Link to={`/profile/${article?.author.username}`}>
+               <Avatar width={40} height={40} src={article?.author.image} />
+            </Link>
             <div className='flex flex-col justify-between'>
-               <h3 className='text-white text-lg'>{article?.author.username}</h3>
+               <Link to={`/profile/${article?.author.username}`}>
+                  <h3 className='text-white text-lg'>{article?.author.username}</h3>
+               </Link>
                <p className='text-black text-sm'>{date(article?.createdAt)}</p>
             </div>
             <Button

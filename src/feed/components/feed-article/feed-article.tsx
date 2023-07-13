@@ -16,11 +16,11 @@ export default function FeedArticleComponent({ article }: Props) {
          <div className='flex flex-col gap-1'>
             <h3
                onClick={handleNavigate}
-               className='text-black font-semibold text-xl hover:cursor-pointer'
+               className='text-black font-semibold text-xl hover:cursor-pointer line-clamp-2 text-justify'
             >
                {article.title}
             </h3>
-            <p className='text-gray-500 line-clamp-3'>{article.body}</p>
+            <p className='text-gray-500 text-justify line-clamp-3'>{article.body}</p>
          </div>
          <div className='flex flex-row justify-between items-center'>
             <Link

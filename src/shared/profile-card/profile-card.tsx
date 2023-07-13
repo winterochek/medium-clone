@@ -4,7 +4,7 @@ import { Avatar, Button } from '../ui'
 import clsx from 'clsx'
 import { useMutation } from 'react-query'
 import { Follow, UnFollow } from '../../api/profiles'
-import { TOKEN_KEY, useLocalStorage } from '../lib'
+import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../lib'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
@@ -16,14 +16,19 @@ export default function ProfileCardComponent({ profile, isOwn }: Props) {
    const [followed, setFollowed] = useState(!!profile?.following)
    const navigate = useNavigate()
    const { get } = useLocalStorage()
+   const { user } = useAuthStore()
    const { mutate } = useMutation({ mutationFn: followed ? UnFollow : Follow })
 
-   const variant = () => (followed ? 'outline' : 'green')
-   const btnText = () => (isOwn ? 'edit' : followed ? 'unfollow' : 'follow')
+   const variant = () => (!!user ? (followed ? 'outline' : 'green') : 'gray')
+   const btnText = () =>
+      isOwn ? 'edit' : !!user ? (followed ? 'unfollow' : 'follow') : 'sign in to follow'
 
    const handleClick = () => {
       if (isOwn) {
          navigate('/settings')
+      }
+      if (!user) {
+         navigate('/login')
       }
       if (!isOwn) {
          setFollowed(v => !v)
@@ -50,7 +55,7 @@ export default function ProfileCardComponent({ profile, isOwn }: Props) {
             </p>
          </div>
          <div className='flex items-center justify-center'>
-            <Button onClick={handleClick} variant={variant()}>
+            <Button onClick={handleClick} variant={variant()} classname='w-20'>
                {btnText()}
             </Button>
          </div>
