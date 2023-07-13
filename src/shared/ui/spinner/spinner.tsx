@@ -1,21 +1,18 @@
 import clsx from 'clsx'
-import { he } from 'date-fns/locale'
 
 type Props = {
    width?: number
    height?: number
 }
 
-export default function SpinnerComponent({ width, height }: Props) {
+export default function SpinnerComponent({ width = 20, height = 20 }: Props) {
    return (
       <div className='flex items-center justify-center' role='status'>
          <svg
             width={width}
             height={height}
             aria-hidden='true'
-            className={clsx(
-               'inline text-gray-200 animate-spin fill-green-500',
-            )}
+            className={clsx('inline text-gray-200 animate-spin fill-green-500')}
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'

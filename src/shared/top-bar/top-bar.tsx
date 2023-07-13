@@ -4,6 +4,7 @@ import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../lib'
 import { useQuery } from 'react-query'
 import { UserInfo } from '../../api'
 import { UserInterface } from '../../models'
+import { Spinner } from '../ui/spinner'
 
 export default function TopBarComponent() {
    const { pathname } = useLocation()
@@ -19,6 +20,7 @@ export default function TopBarComponent() {
       queryKey: ['user-info', user?.username],
       queryFn: () => UserInfo(get(TOKEN_KEY)),
       onSuccess: onSuccess,
+      retry: 2,
    })
 
    let content: JSX.Element | null
@@ -48,6 +50,15 @@ export default function TopBarComponent() {
          )
       }
    }
+
+   if (isLoading) {
+      if (pathname === '/login' || pathname === '/register') {
+         content = null
+      } else {
+         content = <Spinner height={20} width={20} />
+      }
+   }
+
    return (
       <div className='flex flex-row justify-between items-center h-14 py-2'>
          <Link className='flex items-center justify-center' to={'/'}>
