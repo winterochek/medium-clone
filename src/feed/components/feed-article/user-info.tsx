@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import { useMutation } from 'react-query'
 import { LikeOrDislikeArticle } from '../../../api'
-import { TOKEN_KEY, useLocalStorage } from '../../../shared/lib'
+import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../../../shared/lib'
 
 export default function UserInfo({
    author,
@@ -18,11 +18,13 @@ export default function UserInfo({
 }: ArticleInterface) {
    const [liked, setIsLiked] = useState(favorited)
    const [likes, setLikes] = useState(favoritesCount)
+   const { user } = useAuthStore()
    const navigate = useNavigate()
    const { get } = useLocalStorage()
    const handleNavigate = () => navigate(`/profile/${author.username}`)
    const { mutate, isError, error } = useMutation({ mutationFn: LikeOrDislikeArticle })
    const handleLike = () => {
+      if (!user) return
       const token = get(TOKEN_KEY)
       setIsLiked(l => !l)
       if (liked) {
@@ -61,7 +63,7 @@ export default function UserInfo({
                <p className='text-gray-500'>{date}</p>
             </div>
          </div>
-         <Button onClick={handleLike} variant={getVariant()}>
+         <Button onClick={handleLike} variant={getVariant()} disabled={!user}>
             <div className='flex flex-row items-center gap-1'>
                {!isError && (
                   <>

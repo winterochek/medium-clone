@@ -58,7 +58,7 @@ export default function ArticleFormComponent({ action, slug, defaultValues }: Pr
                <Input field='description' placeholder='description' />
                <Textarea field='body' placeholder='body of an article' />
                <Input field='tagList' placeholder='tags' />
-               <Button disabled={disabled} type='submit' variant='green'>
+               <Button disabled={disabled} type='submit' variant='green' classname='ml-auto w-20'>
                   <div className='w-full h-full flex flex-row items-center justify-center gap-1'>
                      {isLoading && <Spinner width={8} height={8} />}
                      {btnText}

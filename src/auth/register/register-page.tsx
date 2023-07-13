@@ -45,12 +45,15 @@ export default function RegisterPage() {
          redirectTitle='Switch to sign in'
       >
          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)} className='flex flex-col gap-2 w-3/5'>
+            <form
+               onSubmit={methods.handleSubmit(onSubmit)}
+               className='flex flex-col gap-2 w-2/5 mt-8'
+            >
                {isError && <p className='text-red-500 px-2'>{String(error)}</p>}
                <Input field='username' placeholder='username' type='text' />
                <Input field='email' placeholder='email@mail.com' type='email' />
                <PasswordInput field='password' placeholder='password' />
-               <Button disabled={disabled} type='submit'>
+               <Button disabled={disabled} type='submit' variant='green' classname='ml-auto w-20'>
                   Sign up
                </Button>
             </form>

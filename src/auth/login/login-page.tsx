@@ -38,13 +38,18 @@ export default function LoginPage() {
    const disabled = (isSubmitted && !isValid) || isLoading
 
    return (
-      <FormContainer isRedirect title='Sign in' redirectPath='/register' redirectTitle='Switch to sign up'>
+      <FormContainer
+         isRedirect
+         title='Sign in'
+         redirectPath='/register'
+         redirectTitle='Switch to sign up'
+      >
          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)} className='flex flex-col gap-2 w-3/5'>
+            <form onSubmit={methods.handleSubmit(onSubmit)} className='flex flex-col gap-2 w-2/5'>
                {isError && <p className='text-red-500 px-2'>{String(error)}</p>}
                <Input field='email' placeholder='email@mail.com' type='email' />
                <PasswordInput field='password' placeholder='password' />
-               <Button disabled={disabled} type='submit'>
+               <Button disabled={disabled} type='submit' classname='ml-auto w-20' variant='green'>
                   Sign in
                </Button>
             </form>

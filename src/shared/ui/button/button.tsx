@@ -13,7 +13,7 @@ export default function ButtonComponent({ classname, children, type, variant, ..
       <button
          type={type || 'button'}
          className={clsx(
-            'shadow-md rounded-md px-4 py-2  hover:cursor-pointer  transition ease-out hover:translate-y-[1px] disabled:bg-gray-500 disabled:translate-y-0 disabled:cursor-auto',
+            'shadow-md rounded-md px-4 py-2  hover:cursor-pointer  transition ease-out hover:translate-y-[1px] disabled:translate-y-0 disabled:cursor-auto',
             variant === 'outline' &&
                'bg-white border-2 border-green-500 text-green-500 hover:bg-white ',
             variant === 'danger' && 'bg-white border-2 border-red-500 text-red-500 hover:bg-white',
