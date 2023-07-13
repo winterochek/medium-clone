@@ -29,6 +29,19 @@ export async function Articles({
    return response.json()
 }
 
+export async function ParticularArticle({
+   slug,
+}: {
+   slug: string
+}): Promise<SingleArticleResponseInterface> {
+   const url = `${baseURL}/articles/${slug}`
+   const response = await fetch(url)
+   if (!response.ok) {
+      throw new Error('Fetching article failed')
+   }
+   return response.json()
+}
+
 export async function ArticlesWithFilterParams({
    token,
    page = 1,

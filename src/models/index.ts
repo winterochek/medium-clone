@@ -1,3 +1,4 @@
+import { CommentInterface, MultipleCommentsResponseInterface } from './comment-interface'
 import { ProfileInterface } from './profile-interface'
 import {
    ArticleInterface,
@@ -15,3 +16,5 @@ export type {
    SingleArticleResponseInterface,
    MultipleArticlesResponseInterface,
 }
+
+export type { CommentInterface, MultipleCommentsResponseInterface }
