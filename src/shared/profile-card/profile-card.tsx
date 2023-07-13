@@ -4,8 +4,9 @@ import { Avatar, Button } from '../ui'
 import clsx from 'clsx'
 import { useMutation } from 'react-query'
 import { Follow, UnFollow } from '../../api/profiles'
-import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../lib'
+import { useAuthStore } from '../lib'
 import { useNavigate } from 'react-router-dom'
+import { UseToken } from '../lib/use-token'
 
 interface Props {
    profile: ProfileInterface
@@ -15,7 +16,7 @@ interface Props {
 export default function ProfileCardComponent({ profile, isOwn }: Props) {
    const [followed, setFollowed] = useState(!!profile?.following)
    const navigate = useNavigate()
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const { user } = useAuthStore()
    const { mutate } = useMutation({ mutationFn: followed ? UnFollow : Follow })
 
@@ -24,6 +25,7 @@ export default function ProfileCardComponent({ profile, isOwn }: Props) {
       isOwn ? 'edit' : !!user ? (followed ? 'unfollow' : 'follow') : 'sign in to follow'
 
    const handleClick = () => {
+      if (!token) return
       if (isOwn) {
          navigate('/settings')
       }
@@ -32,7 +34,7 @@ export default function ProfileCardComponent({ profile, isOwn }: Props) {
       }
       if (!isOwn) {
          setFollowed(v => !v)
-         mutate({ username: profile?.username || '', token: get(TOKEN_KEY) || '' })
+         mutate({ username: profile?.username || '', token })
       }
    }
    return (

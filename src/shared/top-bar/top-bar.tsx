@@ -1,15 +1,16 @@
 import { Link, useLocation } from 'react-router-dom'
 import { NavItem } from './nav-item'
-import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../lib'
+import { useAuthStore } from '../lib'
 import { useQuery } from 'react-query'
 import { UserInfo } from '../../api'
 import { UserInterface } from '../../models'
 import { Spinner } from '../ui/spinner'
+import { UseToken } from '../lib/use-token'
 
 export default function TopBarComponent() {
    const { pathname } = useLocation()
    const { user, login } = useAuthStore()
-   const { get } = useLocalStorage()
+   const token = UseToken()
 
    const onSuccess = (data: unknown) => {
       const { user } = data as { user: UserInterface }
@@ -18,7 +19,7 @@ export default function TopBarComponent() {
 
    const { isLoading } = useQuery({
       queryKey: ['user-info', user?.username],
-      queryFn: () => UserInfo(get(TOKEN_KEY)),
+      queryFn: () => UserInfo(token),
       onSuccess: onSuccess,
       retry: 2,
    })

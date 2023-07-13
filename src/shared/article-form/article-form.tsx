@@ -5,24 +5,24 @@ import { Button, Input } from '../ui'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import { Textarea } from '../ui/textarea'
-import { ArticleInterface, SingleArticleResponseInterface } from '../../models'
+import { SingleArticleResponseInterface } from '../../models'
 import { useNavigate } from 'react-router-dom'
-import { TOKEN_KEY, useLocalStorage } from '../lib'
 import { useMutation } from 'react-query'
 import { CreateArticle } from '../../api'
 import { Spinner } from '../ui/spinner'
 import { UpdateArticle } from '../../api/articles'
+import { UseToken } from '../lib/use-token'
 
 type Props = {
    action: 'create' | 'edit'
    slug?: string
-   defaultValues?: ArticleInterface
+   defaultValues?: ArticleFormInterface
 }
 
 export default function ArticleFormComponent({ action, slug, defaultValues }: Props) {
-   const form = useForm<ArticleFormInterface>({ resolver: yupResolver(schema) })
+   const form = useForm<ArticleFormInterface>({ resolver: yupResolver(schema), defaultValues })
    const navigate = useNavigate()
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const onSuccess = (data: SingleArticleResponseInterface) => {
       navigate(`/articles/${data?.article?.slug}`)
    }
@@ -32,9 +32,9 @@ export default function ArticleFormComponent({ action, slug, defaultValues }: Pr
    })
 
    const mutateFn = (data: ArticleFormInterface) => {
-      const token = get(TOKEN_KEY)
+      if (!token) return
       if (action === 'create') {
-         return mutate({ data, token: get(TOKEN_KEY) })
+         return mutate({ data, token })
       } else {
          return mutate({ data, token, slug })
       }

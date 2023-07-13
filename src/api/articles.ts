@@ -37,12 +37,15 @@ export async function ParticularArticle({
    token: string
 }): Promise<SingleArticleResponseInterface> {
    const url = `${baseURL}/articles/${slug}`
-   const response = await fetch(url, {
+
+   const options: any = {
       method: 'GET',
-      headers: {
-         Authorization: `Token ${token || ''}`,
-      },
-   })
+      headers: { 'Content-Type': 'application/json', Authorization: undefined },
+   }
+   if (token) {
+      options.headers.Authorization = `Token ${token}`
+   }
+   const response = await fetch(url, options)
    if (!response.ok) {
       throw new Error('Fetching article failed')
    }
@@ -56,7 +59,7 @@ export async function ArticlesWithFilterParams({
    liked,
    tag,
 }: {
-   token: string
+   token?: string
    page?: number
    author?: string
    liked?: string

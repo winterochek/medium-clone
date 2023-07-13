@@ -1,6 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { UserInterface } from '../../models'
-import { TOKEN_KEY, useLocalStorage } from '../../shared/lib'
 import { useMutation } from 'react-query'
 import { UserInfoUpdate } from '../../api'
 import { Label } from '../../shared/ui/label'
@@ -9,13 +8,14 @@ import { Spinner } from '../../shared/ui/spinner'
 import { FormContainer } from '../../shared/form-container'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
+import { UseToken } from '../../shared/lib/use-token'
 
 type Props = {
    initialValue: UserInterface
 }
 
 export default function SettingsFormComponent({ initialValue }: Props) {
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const form = useForm<Omit<UserInterface, 'token'>>({
       defaultValues: {
          email: initialValue.email,
@@ -30,7 +30,6 @@ export default function SettingsFormComponent({ initialValue }: Props) {
    })
 
    const handleUpdate = (data: Omit<UserInterface, 'token'>) => {
-      const token = get(TOKEN_KEY)
       mutate({ data, token })
    }
 
@@ -69,7 +68,12 @@ export default function SettingsFormComponent({ initialValue }: Props) {
                   <Label title='Biography'>
                      <Input field='bio' placeholder='describe yourself' />
                   </Label>
-                  <Button disabled={disabled} type='submit' variant='green' classname='ml-auto w-20'>
+                  <Button
+                     disabled={disabled}
+                     type='submit'
+                     variant='green'
+                     classname='ml-auto w-20'
+                  >
                      <div className='w-full h-full flex flex-row items-center justify-center gap-1'>
                         {isLoading && <Spinner width={2} height={2} />}
                         Update

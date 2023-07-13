@@ -1,20 +1,19 @@
 import { ReactNode, useState } from 'react'
 import { ProfileInterface } from '../../../models'
-import { TOKEN_KEY, useLocalStorage } from '../../../shared/lib'
 import { useQuery } from 'react-query'
 import { ArticlesWithFilterParams } from '../../../api/articles'
 import { Loading } from '../../../shared/loading'
 import { FeedArticle } from '../../../feed'
 import { Pagination } from '../../../shared/pagination'
+import { UseToken } from '../../../shared/lib/use-token'
 
 export default function AuthoredFeedComponent({ profile }: { profile: ProfileInterface }) {
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const [page, setPage] = useState<number>(1)
    const handlePageAction = (page: number) => setPage(() => page)
    const { data, isLoading, isSuccess, isError, error } = useQuery({
       queryKey: ['articles', 'authored', profile.username, page],
-      queryFn: () =>
-         ArticlesWithFilterParams({ token: get(TOKEN_KEY), page, author: profile.username }),
+      queryFn: () => ArticlesWithFilterParams({ token, page, author: profile.username }),
    })
    let content: ReactNode
 

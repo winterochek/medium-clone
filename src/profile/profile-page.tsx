@@ -2,17 +2,18 @@ import { useParams } from 'react-router-dom'
 import { ProfileCard, ProfileCardSkeleton } from '../shared/profile-card'
 import { useQuery } from 'react-query'
 import { Profile } from '../api/profiles'
-import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../shared/lib'
+import { useAuthStore } from '../shared/lib'
 import { Error } from './components/error-component'
 import { ProfileFeed } from './components/profile-feed'
+import { UseToken } from '../shared/lib/use-token'
 
 export default function ProfilePage() {
    const { slug: username } = useParams()
    const { user } = useAuthStore()
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const { data, isError, error } = useQuery({
       queryKey: ['profile', username],
-      queryFn: () => Profile({ username: username || '', token: get(TOKEN_KEY) }),
+      queryFn: () => Profile({ username: username || '', token }),
    })
 
    return (

@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import { useMutation } from 'react-query'
 import { LikeOrDislikeArticle } from '../../../api'
-import { TOKEN_KEY, useAuthStore, useLocalStorage } from '../../../shared/lib'
+import { useAuthStore } from '../../../shared/lib'
+import { UseToken } from '../../../shared/lib/use-token'
 
 export default function UserInfo({
    author,
@@ -20,12 +21,11 @@ export default function UserInfo({
    const [likes, setLikes] = useState(favoritesCount)
    const { user } = useAuthStore()
    const navigate = useNavigate()
-   const { get } = useLocalStorage()
+   const token = UseToken()
    const handleNavigate = () => navigate(`/profile/${author.username}`)
    const { mutate, isError, error } = useMutation({ mutationFn: LikeOrDislikeArticle })
    const handleLike = () => {
-      if (!user) return
-      const token = get(TOKEN_KEY)
+      if (!user || !token) return
       setIsLiked(l => !l)
       if (liked) {
          setLikes(n => n - 1)
