@@ -139,6 +139,19 @@ export async function UpdateArticle({
    return response.json()
 }
 
+export async function DeleteArticle({ slug, token }: { slug: string; token: string }) {
+   const url = `${baseURL}/articles/${slug}`
+   const response = await fetch(url, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', Authorization: `Token ${token || ''}` },
+   })
+   if (!response.ok) {
+      throw new Error('Deleting article failed')
+   }
+
+   return response.json()
+}
+
 export async function LikeOrDislikeArticle({
    action,
    slug,
