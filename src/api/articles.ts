@@ -31,11 +31,18 @@ export async function Articles({
 
 export async function ParticularArticle({
    slug,
+   token,
 }: {
    slug: string
+   token: string
 }): Promise<SingleArticleResponseInterface> {
    const url = `${baseURL}/articles/${slug}`
-   const response = await fetch(url)
+   const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+         Authorization: `Token ${token || ''}`,
+      },
+   })
    if (!response.ok) {
       throw new Error('Fetching article failed')
    }

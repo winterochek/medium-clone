@@ -8,7 +8,7 @@ export default function TagListComponent({ tags }: { tags: string[] }) {
          {tags.map((tag, i) => (
             <div
                key={`${tag}/${i}`}
-               className='inline-block border border-gray-500 text-gray-500 p-1 rounded-xl overflow-hidden text-sm hover:cursor-pointer select-none'
+               className='inline-block border border-gray-500 text-gray-500 py-1 px-2 rounded-xl overflow-hidden text-sm hover:cursor-pointer select-none'
                onClick={() => handleNavigate(tag)}
             >
                {tag}
