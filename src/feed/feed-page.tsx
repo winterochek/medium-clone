@@ -1,19 +1,19 @@
 import { useState } from 'react'
 import { FeedEnum } from './types'
 import { FeedArticle } from './components/feed-article'
-import { useLocalStorage, PAGE_KEY } from '../shared/lib'
 import { useQuery } from 'react-query'
 import { Articles } from '../api'
 import { Loading } from '../shared/loading'
 import { Pagination } from '../shared/pagination'
 import { ExploreTags } from './components/explore-tags'
 import { UseToken } from '../shared/lib/use-token'
+import { usePage } from '../shared/lib/use-page'
 
 export default function FeedPage() {
    const [feed, setFeed] = useState(FeedEnum.GLOBAL)
    const token = UseToken()
-   const { get, set } = useLocalStorage()
-   const [page, setPage] = useState<number>(Number(get(PAGE_KEY)) || 1)
+   const { page: lsPage, setPage: setLsPage } = usePage()
+   const [page, setPage] = useState<number>(Number(lsPage) || 1)
    const isPersonal = feed === FeedEnum.PERSONAL
    const { data, isLoading, isSuccess, isError, error } = useQuery({
       queryKey: ['articles', isPersonal, page],
@@ -22,7 +22,7 @@ export default function FeedPage() {
    const switchFeed = feed === FeedEnum.GLOBAL ? FeedEnum.PERSONAL : FeedEnum.GLOBAL
    const handleSwitchFeed = () => setFeed(switchFeed)
    const handlePageAction = (page: number) => {
-      set(PAGE_KEY, page)
+      setLsPage(page)
       setPage(() => page)
    }
 
