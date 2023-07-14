@@ -1,18 +1,14 @@
+import clsx from 'clsx'
 import { HTMLProps } from 'react'
 
 interface Props extends HTMLProps<HTMLImageElement> {
-   // onClick: () => void
+   classname?: string
 }
-export default function AvatarComponent(props: Props) {
+export default function AvatarComponent({ classname, ...props }: Props) {
    return (
       <img
          {...props}
-        //  onClick={handleNavigate}
-        //  src={author.image}
-        //  alt={author.username}
-        //  height={40}
-        //  width={40}
-         className='rounded-full hover:cursor-pointer'
+         className={clsx('rounded-full hover:cursor-pointer', classname)}
       />
    )
 }

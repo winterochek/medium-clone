@@ -56,18 +56,18 @@ export default function TopBarComponent() {
       if (pathname === '/login' || pathname === '/register') {
          content = null
       } else {
-         content = <Spinner height={20} width={20} />
+         content = <Spinner classname='w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7' />
       }
    }
 
    return (
-      <div className='flex flex-row justify-between items-center h-14 py-2'>
+      <div className='flex flex-row justify-between items-center h-20 pt-2 sm:py-2'>
          <Link className='flex items-center justify-center' to={'/'}>
-            <span className='text-3xl text-green-500 font-semibold flex justify-center items-center'>
+            <span className='text-4xl lg:text-5xl leading-tight pb-2 text-green-500 font-semibold flex justify-center items-center'>
                medium
             </span>
          </Link>
-         <nav className='flex flex-row gap-2 items-center'>
+         <nav className='flex flex-row gap-3 items-center sm:text-base md:text-lg lg:text-xl'>
             <NavItem isActive={pathname === '/'} to={'/'} title={'Home'} />
             <>{content!}</>
          </nav>

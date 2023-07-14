@@ -31,7 +31,7 @@ export default function FeedPage() {
    if (isLoading) {
       content = (
          <div className='w-full flex items-center justify-center'>
-            <Loading title='Your feed is loading' />
+            <Loading title='Your feed is loading' classname='w-5 h-5 sm:w-6 sm:h-6' />
          </div>
       )
    }
@@ -76,7 +76,7 @@ export default function FeedPage() {
       <div className='flex flex-col items-start pb-4'>
          <span
             onClick={handleSwitchFeed}
-            className='text-sm mx-auto font-normal mb-1 text-center flex items-center justify-center text-gray-500 hover:text-black hover:cursor-pointer select-none'
+            className='text-sm md:text-base mx-auto font-normal mb-1 text-center flex items-center justify-center text-gray-500 hover:text-black hover:cursor-pointer select-none'
          >
             Switch to {switchFeed} feed
          </span>

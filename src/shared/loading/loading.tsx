@@ -2,15 +2,14 @@ import { Spinner } from '../ui/spinner'
 
 type Props = {
    title: string
-   height?: number
-   width?: number
+   classname?: string
 }
 
-export default function LoadingComponent({ title, height = 20, width = 20 }: Props) {
+export default function LoadingComponent({ title, classname = 'w-5 h-5 sm:w-6 sm:h-6' }: Props) {
    return (
       <div className='flex flex-row gap-5 items-center justify-center'>
-         <span className='text-green-500'>{title}</span>
-         <Spinner height={height} width={width} />
+         <span className='text-green-500 md:text-base'>{title}</span>
+         <Spinner classname={classname} />
       </div>
    )
 }

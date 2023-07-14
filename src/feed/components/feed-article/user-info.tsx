@@ -42,25 +42,24 @@ export default function UserInfo({
    }
    const date = format(new Date(createdAt), 'dd-MM-yyyy')
    return (
-      <div className='flex flex-row justify-between items-center mb-2'>
-         <div className='flex flex-row gap-1 h-full'>
+      <div className='flex flex-row justify-between items-center'>
+         <div className='flex flex-row gap-1 sm:gap-2 md:gap-3 h-full'>
             <div className='flex items-center justify-center'>
                <Avatar
                   onClick={handleNavigate}
                   src={author.image}
                   alt={author.username}
-                  height={40}
-                  width={40}
+                  classname='w-10 h-10 md:w-12 md:h-12'
                />
             </div>
             <div className='flex flex-col items-start'>
                <p
                   onClick={handleNavigate}
-                  className='text-green-500 text-lg font-medium hover:cursor-pointer hover:underline'
+                  className='text-green-500 text-lg md:text-xl font-medium hover:cursor-pointer hover:underline'
                >
                   {author.username}
                </p>
-               <p className='text-gray-500'>{date}</p>
+               <p className='text-gray-500 text-xs sm:text-sm md:text-base'>{date}</p>
             </div>
          </div>
          <Button
@@ -75,7 +74,13 @@ export default function UserInfo({
                      <AiOutlineLike
                         className={clsx(liked && 'fill-white', !liked && 'fill-green-500')}
                      />
-                     <span className={clsx(liked && 'text-white', !liked && 'text-green-500')}>
+                     <span
+                        className={clsx(
+                           'text-xs md:text-base lg:text-lg',
+                           liked && 'text-white',
+                           !liked && 'text-green-500'
+                        )}
+                     >
                         {likes}
                      </span>
                   </>

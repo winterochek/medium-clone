@@ -18,7 +18,7 @@ export default function SingleArticlePage() {
    const { user } = useAuthStore()
 
    if (isLoading || !articleSlug) {
-      return <Loading title='Article is loading' />
+      return <Loading title='Article is loading' classname='w-5 h-5 sm:w-6 sm:h-6' />
    }
 
    if (isError) {
