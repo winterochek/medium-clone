@@ -7,6 +7,8 @@ import { Settings } from './settings'
 import { Profile } from './profile'
 import { Layout } from './shared/layout'
 import { TagFeed } from './tag-feed'
+import { Suspense } from 'react'
+import { SuspenseLoadingModal } from './shared/suspense-loading-modal'
 
 function App() {
    const queryClient = new QueryClient()
@@ -15,14 +17,70 @@ function App() {
          <Routes>
             <Route element={<Layout />}>
                <Route path='/' element={<Feed />} />
-               <Route path='/login' element={<Login />} />
-               <Route path='/register' element={<Register />} />
-               <Route path='/create' element={<CreateArticle />} />
-               <Route path='/settings' element={<Settings />} />
-               <Route path='/articles/:slug' element={<SingleArticle />} />
-               <Route path='/articles/:slug/edit' element={<EditArticle />} />
-               <Route path='/profile/:slug' element={<Profile />} />
-               <Route path='/tag/:slug' element={<TagFeed />} />
+               <Route
+                  path='/login'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <Login />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/register'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <Register />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/create'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <CreateArticle />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/settings'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <Settings />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/articles/:slug'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <SingleArticle />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/articles/:slug/edit'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <EditArticle />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/profile/:slug'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <Profile />
+                     </Suspense>
+                  }
+               />
+               <Route
+                  path='/tag/:slug'
+                  element={
+                     <Suspense fallback={<SuspenseLoadingModal />}>
+                        <TagFeed />
+                     </Suspense>
+                  }
+               />
             </Route>
          </Routes>
       </QueryClientProvider>

@@ -3,16 +3,17 @@ import clsx from 'clsx'
 type Props = {
    width?: number
    height?: number
+   classname?: string
 }
 
-export default function SpinnerComponent({ width = 20, height = 20 }: Props) {
+export default function SpinnerComponent({ width = 20, height = 20, classname }: Props) {
    return (
       <div className='flex items-center justify-center' role='status'>
          <svg
             width={width}
             height={height}
             aria-hidden='true'
-            className={clsx('inline text-gray-200 animate-spin fill-green-500')}
+            className={clsx('inline text-gray-200 animate-spin fill-green-500', classname)}
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'

@@ -8,7 +8,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
    <React.StrictMode>
       <BrowserRouter>
          <App />
-         <div id='modals'></div>
       </BrowserRouter>
    </React.StrictMode>
 )

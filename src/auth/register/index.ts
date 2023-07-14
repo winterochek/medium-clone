@@ -1,5 +1,5 @@
 import { RegisterFormInterface } from './types'
-import RegisterPage from './register-page'
+import Register from './register-page'
 
-export { RegisterPage as Register }
+export default Register
 export type { RegisterFormInterface }
