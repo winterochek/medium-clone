@@ -21,7 +21,7 @@ export default function TopBarComponent() {
       queryKey: ['user-info', user?.username],
       queryFn: () => UserInfo(token),
       onSuccess: onSuccess,
-      retry: 2,
+      enabled: !!token,
    })
 
    let content: JSX.Element | null

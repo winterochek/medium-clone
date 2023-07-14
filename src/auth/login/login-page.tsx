@@ -45,7 +45,10 @@ export default function LoginPage() {
          redirectTitle='Switch to sign up'
       >
          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)} className='flex flex-col gap-2 w-2/5'>
+            <form
+               onSubmit={methods.handleSubmit(onSubmit)}
+               className='flex flex-col gap-2 w-2/5 mt-8'
+            >
                {isError && <p className='text-red-500 px-2'>{String(error)}</p>}
                <Input field='email' placeholder='email@mail.com' type='email' />
                <PasswordInput field='password' placeholder='password' />
