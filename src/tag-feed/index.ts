@@ -1,3 +1,3 @@
-import TagFeedPage from "./tag-feed";
-
-export {TagFeedPage as TagFeed}
+import { lazy } from 'react'
+const TagFeed = lazy(() => import('./tag-feed'))
+export { TagFeed }

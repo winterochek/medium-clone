@@ -1,3 +1,4 @@
-import ProfilePage from "./profile-page";
+import { lazy } from 'react'
 
-export {ProfilePage as Profile}
+const Profile = lazy(() => import('./profile-page'))
+export { Profile }
