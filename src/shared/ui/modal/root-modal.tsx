@@ -8,7 +8,7 @@ type Props = {
    onClose?: (event: any) => void
 }
 
-export default function RootModalComponent({ position, children, onClose }: Props) {
+export function RootModal({ position, children, onClose }: Props) {
    return createPortal(
       <div
          onClick={onClose}

@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 interface Props extends HTMLProps<HTMLTextAreaElement> {
    field: string
 }
-export default function TextareaComponent({ field, ...rest }: Props) {
+export function Textarea({ field, ...rest }: Props) {
    const {
       register,
       formState: { errors },

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import RootModalComponent from './root-modal'
+import { RootModal } from './root-modal'
 import clsx from 'clsx'
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
    children: ReactNode
    classname?: string
 }
-export default function ModalComponent({
+export function Modal({
    isOpen = false,
    onClose,
    width = 'md',
@@ -25,7 +25,7 @@ export default function ModalComponent({
       onClose()
    }
    return (
-      <RootModalComponent onClose={handleClose} position={position}>
+      <RootModal onClose={handleClose} position={position}>
          <div
             data-id='modal'
             className={clsx(
@@ -37,6 +37,6 @@ export default function ModalComponent({
          >
             {children}
          </div>
-      </RootModalComponent>
+      </RootModal>
    )
 }

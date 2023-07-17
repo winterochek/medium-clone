@@ -1,3 +1,3 @@
-import SpinnerComponent from './spinner'
+import { Spinner } from './spinner'
 
-export { SpinnerComponent as Spinner }
+export { Spinner }

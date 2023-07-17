@@ -1,3 +1,3 @@
-import TextareaComponent from './textarea'
+import { Textarea } from './textarea'
 
-export { TextareaComponent as Textarea }
+export { Textarea }

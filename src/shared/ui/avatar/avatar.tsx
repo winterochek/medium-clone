@@ -4,7 +4,7 @@ import { HTMLProps } from 'react'
 interface Props extends HTMLProps<HTMLImageElement> {
    classname?: string
 }
-export default function AvatarComponent({ classname, ...props }: Props) {
+export function Avatar({ classname, ...props }: Props) {
    return (
       <img
          {...props}

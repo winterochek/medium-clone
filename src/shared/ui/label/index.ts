@@ -1,3 +1,3 @@
-import LabelComponent from './label'
+import { Label } from './label'
 
-export { LabelComponent as Label }
+export { Label }

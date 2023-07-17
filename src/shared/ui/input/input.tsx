@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { HTMLProps } from 'react'
 import { useFormContext } from 'react-hook-form'
 
@@ -7,7 +8,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
    endIcon?: any
 }
 
-export default function InputComponent({ field, endIcon: EndIcon, ...rest }: Props) {
+export function Input({ field, endIcon: EndIcon, ...rest }: Props) {
    const {
       register,
       formState: { errors },
@@ -18,9 +19,10 @@ export default function InputComponent({ field, endIcon: EndIcon, ...rest }: Pro
       <div className='w-full'>
          <input
             {...register(field)}
-            className={`bg-transparent border-2 h-10 focus:border-gray-500 rounded-md py-1 px-2 flex self-center w-full transition-all ease-in focus:outline-none text-black placeholder:text-gray-500
-            ${hasError ? 'border-red-500' : ''}
-            `}
+            className={clsx(
+               'bg-transparent border-2 h-10 focus:border-gray-500 rounded-md py-1 px-2 flex self-center w-full transition-all ease-in focus:outline-none text-black placeholder:text-gray-500',
+               hasError && 'border-red-500'
+            )}
             {...rest}
          />
          <div className='absolute right-1 top-0 h-10 flex items-center justify-center'>

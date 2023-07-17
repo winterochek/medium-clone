@@ -1,3 +1,3 @@
-import AvatarComponent from './avatar'
+import { Avatar } from './avatar'
 
-export { AvatarComponent as Avatar }
+export { Avatar }

@@ -4,11 +4,17 @@ import { HTMLProps, ReactNode } from 'react'
 interface Props extends HTMLProps<HTMLButtonElement> {
    classname?: string
    children: ReactNode
-   variant?: 'outline' | 'green' | 'danger' | 'gray'
+   variant: 'outline' | 'green' | 'danger' | 'gray'
    type?: 'submit' | 'button' | 'reset'
 }
 
-export default function ButtonComponent({ classname, children, type, variant, ...rest }: Props) {
+export function Button({
+   classname,
+   children,
+   type,
+   variant = 'green',
+   ...rest
+}: Props) {
    return (
       <button
          type={type || 'button'}

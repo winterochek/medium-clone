@@ -6,7 +6,7 @@ type Props = {
    classname?: string
 }
 
-export default function SpinnerComponent({ width = 20, height = 20, classname }: Props) {
+export function Spinner({ width = 20, height = 20, classname }: Props) {
    return (
       <div className='flex items-center justify-center' role='status'>
          <svg
