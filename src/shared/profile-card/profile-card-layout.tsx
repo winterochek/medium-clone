@@ -20,7 +20,7 @@ export function ProfileCardLayout({
          <div className='flex-1 flex flex-col items-start gap-2 px-8'>
             <h1
                className={clsx(
-                  'font-semibold text-lg transition-all ease-in',
+                  'font-semibold text-xl transition-all ease-in',
                   followed && 'text-green-500',
                   !followed && 'text-black'
                )}

@@ -12,10 +12,10 @@ export default function ProfileFeedComponent({ profile }: Props) {
    const switchFeed = feed === FeedEnum.AUTHORED ? FeedEnum.LIKED : FeedEnum.AUTHORED
    const handleSwitchFeed = () => setFeed(switchFeed)
    return (
-      <div className='flex flex-col items-start pb-4'>
+      <div className='flex flex-col items-start pb-4 text-base'>
          <span
             onClick={handleSwitchFeed}
-            className='text-sm mx-auto font-normal mb-1 text-center flex items-center justify-center text-gray-500 hover:text-black hover:cursor-pointer select-none'
+            className='text-base lg:text-lg mx-auto font-normal text-center flex items-center justify-center text-gray-500 hover:text-black hover:cursor-pointer select-none'
          >
             Switch to {switchFeed} feed
          </span>

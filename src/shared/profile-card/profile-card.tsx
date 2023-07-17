@@ -45,8 +45,7 @@ export function ProfileCard({ profile, isOwn }: { profile: ProfileInterface; isO
          buttons={
             <>
                <Button onClick={handleClick} variant={variant()} classname='w-20'>
-                  // {btnText()}
-                  //{' '}
+                  {btnText()}
                </Button>
             </>
          }
