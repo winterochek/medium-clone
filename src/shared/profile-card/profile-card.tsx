@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ProfileInterface } from '../../models'
 import { Avatar, Button } from '../ui'
-import clsx from 'clsx'
 import { useMutation } from 'react-query'
 import { Follow, UnFollow } from '../../api/profiles'
 import { useAuthStore } from '../lib'

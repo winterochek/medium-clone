@@ -18,14 +18,14 @@ export default function SingleArticlePage() {
    const { user } = useAuthStore()
 
    if (isLoading || !articleSlug) {
-      return <Loading title='Article is loading' classname='w-5 h-5 sm:w-6 sm:h-6' />
+      return <Loading title='Article is loading' />
    }
 
    if (isError) {
-      return <h2 className='text-red-500 font-medium text-center'>{String(error)}</h2>
+      return <h2 className='text-red-500 font-medium lg:text-lg text-center'>{String(error)}</h2>
    }
    return (
-      <div className='flex flex-col gap-5 pb-8'>
+      <div className='flex flex-col gap-3 md:gap-5 pb-8'>
          {data?.article ? (
             <ArticleCard
                article={data.article}

@@ -48,8 +48,8 @@ export default function ArticleCard({
       }
    }
    return (
-      <div className='bg-green-500 py-4 px-4 rounded-lg flex flex-col gap-4'>
-         <h1 className='text-white font-semibold text-3xl text-justify'>{article?.title}</h1>
+      <div className='bg-green-500 py-4 px-4 rounded-lg flex flex-col gap-2 md:gap-4'>
+         <h1 className='text-white font-semibold text-2xl md:text-3xl text-justify'>{article?.title}</h1>
          <div className='flex flex-row gap-4 items-center justify-start'>
             <Link to={`/profile/${article?.author.username}`}>
                <Avatar width={40} height={40} src={article?.author.image} />

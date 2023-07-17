@@ -61,7 +61,7 @@ export default function TopBarComponent() {
    }
 
    return (
-      <div className='flex flex-row justify-between items-center h-20 pt-2 sm:py-2'>
+      <div className='flex flex-row justify-between items-center h-20 py-2 md:py-4'>
          <Link className='flex items-center justify-center' to={'/'}>
             <span className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight pb-2 text-green-500 font-semibold flex justify-center items-center'>
                medium
