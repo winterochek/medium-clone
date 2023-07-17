@@ -1,10 +1,9 @@
-import { RootModal } from '../ui/modal'
 import { Spinner } from '../ui/spinner'
 
-export default function SuspenseLoadingModalComponent() {
+export function SuspenseLoading() {
    return (
-      <RootModal position='center'>
+      <div className='fixed inset-0 bg-slate-900/60 backdrop-blur flex items-center justify-center'>
          <Spinner classname='h-10 w-10' />
-      </RootModal>
+      </div>
    )
 }

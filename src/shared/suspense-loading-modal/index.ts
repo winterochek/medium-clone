@@ -1,3 +1,3 @@
-import SuspenseLoadingModalComponent from './suspense-loading-modal'
+import { SuspenseLoading } from './suspense-loading-modal'
 
-export { SuspenseLoadingModalComponent as SuspenseLoadingModal }
+export { SuspenseLoading }

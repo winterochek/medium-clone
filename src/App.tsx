@@ -8,7 +8,7 @@ import { Profile } from './profile'
 import { Layout } from './shared/layout'
 import { TagFeed } from './tag-feed'
 import { Suspense } from 'react'
-import { SuspenseLoadingModal } from './shared/suspense-loading-modal'
+import { SuspenseLoading } from './shared/suspense-loading-modal'
 
 function App() {
    const queryClient = new QueryClient()
@@ -20,7 +20,7 @@ function App() {
                <Route
                   path='/login'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <Login />
                      </Suspense>
                   }
@@ -28,7 +28,7 @@ function App() {
                <Route
                   path='/register'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <Register />
                      </Suspense>
                   }
@@ -36,7 +36,7 @@ function App() {
                <Route
                   path='/create'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <CreateArticle />
                      </Suspense>
                   }
@@ -44,7 +44,7 @@ function App() {
                <Route
                   path='/settings'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <Settings />
                      </Suspense>
                   }
@@ -52,7 +52,7 @@ function App() {
                <Route
                   path='/articles/:slug'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <SingleArticle />
                      </Suspense>
                   }
@@ -60,7 +60,7 @@ function App() {
                <Route
                   path='/articles/:slug/edit'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <EditArticle />
                      </Suspense>
                   }
@@ -68,7 +68,7 @@ function App() {
                <Route
                   path='/profile/:slug'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <Profile />
                      </Suspense>
                   }
@@ -76,7 +76,7 @@ function App() {
                <Route
                   path='/tag/:slug'
                   element={
-                     <Suspense fallback={<SuspenseLoadingModal />}>
+                     <Suspense fallback={<SuspenseLoading />}>
                         <TagFeed />
                      </Suspense>
                   }
