@@ -1,4 +1,4 @@
-import ProfileCardComponent from './profile-card'
-import ProfileCardSkeletonComponent from './profile-card-skeleton'
+import {ProfileCard} from './profile-card'
+import {ProfileCardSkeleton} from './profile-card-skeleton'
 
-export { ProfileCardComponent as ProfileCard, ProfileCardSkeletonComponent as ProfileCardSkeleton }
+export {  ProfileCard,  ProfileCardSkeleton }
