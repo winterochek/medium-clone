@@ -1,3 +1,3 @@
-import ArticleFormComponent from './article-form'
+import { ArticleForm } from './article-form'
 
-export { ArticleFormComponent as ArticleForm }
+export { ArticleForm }
