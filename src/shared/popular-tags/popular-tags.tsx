@@ -10,8 +10,12 @@ export default function PopularTagsComponent() {
    })
    return (
       <div className='w-full h-full'>
-         {isLoading && <Loading title='data is loading' classname='w-5 h-5 sm:w-6 sm:h-6' />}
-         {isError && <h2 className='text-red-500 font-medium text-center'>{String(error)}</h2>}
+         {isLoading && <Loading title='data is loading' />}
+         {isError && (
+            <h2 className='text-red-500 font-medium text-center md:text-base lg:text-lg'>
+               {String(error)}
+            </h2>
+         )}
          {isSuccess && <TagList tags={data.tags} />}
       </div>
    )

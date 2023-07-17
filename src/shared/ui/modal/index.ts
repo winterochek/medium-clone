@@ -1,4 +1,4 @@
-import ModalComponent from './modal'
-import RootModalComponent from './root-modal'
+import { Modal } from './modal'
+import { RootModal } from './root-modal'
 
-export { RootModalComponent as RootModal, ModalComponent as Modal }
+export { RootModal, Modal }

@@ -51,7 +51,7 @@ export default function ArticleFormComponent({ action, slug, defaultValues }: Pr
          <FormProvider {...form}>
             <form
                onSubmit={form.handleSubmit(mutateFn)}
-               className='flex flex-col gap-2 w-3/5 h-full'
+               className='flex flex-col gap-2 w-4/5 mt-1 sm:w-3/5 h-full'
             >
                {isError && <p className='text-red-500 px-2'>{String(error)}</p>}
                <Input field='title' placeholder='title' />
