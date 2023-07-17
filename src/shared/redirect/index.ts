@@ -1,3 +1,3 @@
-import RedirectComponent from './redirect'
+import { Redirect } from './redirect'
 
-export { RedirectComponent as Redirect }
+export { Redirect }
