@@ -8,7 +8,7 @@ export function Avatar({ classname, ...props }: Props) {
    return (
       <img
          {...props}
-         className={clsx('rounded-full hover:cursor-pointer', classname)}
+         className={clsx('rounded-full hover:cursor-pointer object-cover', classname)}
       />
    )
 }

@@ -11,7 +11,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Avatar>
 
-export const Green: Story = {
+export const Base: Story = {
    args: {
       src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Cat_eyes_2007-1.jpg/320px-Cat_eyes_2007-1.jpg'
    },

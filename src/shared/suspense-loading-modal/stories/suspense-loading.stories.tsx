@@ -11,4 +11,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof SuspenseLoading>
 
-export const Suspense: Story = {}
+export const Base: Story = {}

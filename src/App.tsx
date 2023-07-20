@@ -12,6 +12,9 @@ import { SuspenseLoading } from './shared/suspense-loading-modal'
 
 function App() {
    const queryClient = new QueryClient()
+   if (Math.random() > 0.5) {
+      throw new Error('bugaga')
+   }
    return (
       <QueryClientProvider client={queryClient}>
          <Routes>
