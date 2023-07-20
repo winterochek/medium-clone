@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export default function TagListComponent({ tags }: { tags: string[] }) {
+export function TagList({ tags }: { tags: string[] }) {
    const navigate = useNavigate()
    const handleNavigate = (tag: string) => navigate(`/tag/${tag}`)
    return (

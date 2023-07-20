@@ -1,3 +1,3 @@
-import TagListComponent from "./tag-list";
+import { TagList } from './tag-list'
 
-export {TagListComponent as TagList}
+export { TagList }
