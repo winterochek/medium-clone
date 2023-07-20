@@ -15,12 +15,17 @@ export function ProfileCard({ profile, isOwn }: { profile: ProfileInterface; isO
    const { user } = useAuthStore()
    const { mutate } = useMutation({ mutationFn: followed ? UnFollow : Follow })
 
-   const variant = () => (!!user ? (followed ? 'outline' : 'green') : 'gray')
+   const variant = () => {
+      if (!!user) return followed ? 'outline' : 'green'
+      if (isOwn) return 'green'
+      return 'gray'
+   }
    const btnText = () => {
       if (isOwn) return 'edit'
       if (!!user) {
          return followed ? 'unfollow' : 'follow'
-      } else return 'sign in to follow'
+      }
+      return 'sign in to follow'
    }
 
    const handleClick = () => {
@@ -28,12 +33,12 @@ export function ProfileCard({ profile, isOwn }: { profile: ProfileInterface; isO
       if (isOwn) {
          navigate('/settings')
       }
-      if (!user) {
-         navigate('/login')
-      }
       if (!isOwn) {
          setFollowed(v => !v)
          mutate({ username: profile.username, token })
+      }
+      if (!user) {
+         navigate('/login')
       }
    }
    return (
@@ -43,7 +48,7 @@ export function ProfileCard({ profile, isOwn }: { profile: ProfileInterface; isO
          bio={profile.bio}
          buttons={
             <>
-               <Button onClick={handleClick} variant={variant()} classname='w-20'>
+               <Button onClick={handleClick} variant={variant()}>
                   {btnText()}
                </Button>
             </>
