@@ -1,3 +1,3 @@
-import PopularTagsComponent from './popular-tags'
+import { PopularTags } from './popular-tags'
 
-export { PopularTagsComponent as PopularTags }
+export { PopularTags }
