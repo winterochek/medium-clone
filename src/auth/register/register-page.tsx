@@ -12,6 +12,7 @@ import { UserInterface } from '../../models'
 import { PasswordInput } from '../../shared/ui/input'
 
 export default function RegisterPage() {
+   // @ts-ignore
    const methods = useForm<RegisterFormInterface>({ resolver: yupResolver(schema) })
    const navigate = useNavigate()
    const { login, user } = useAuthStore()

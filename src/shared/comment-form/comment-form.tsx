@@ -14,6 +14,7 @@ type Props = {
 }
 
 export default function CommentFormComponent({ isLoading, isError, error, mutateFn }: Props) {
+   // @ts-ignore
    const form = useForm<CommentFormInterface>({ resolver: yupResolver(schema) })
    const handleMutation = (data: CommentFormInterface) => {
       mutateFn(data)

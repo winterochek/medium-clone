@@ -18,6 +18,7 @@ type Props = {
 }
 
 export function ArticleForm({ action, slug, defaultValues }: Props) {
+   // @ts-ignore
    const form = useForm<ArticleFormInterface>({ resolver: yupResolver(schema), defaultValues })
    const navigate = useNavigate()
    const token = UseToken()

@@ -1,3 +1,3 @@
 export interface CommentFormInterface {
-   body: string
+   body?: string
 }

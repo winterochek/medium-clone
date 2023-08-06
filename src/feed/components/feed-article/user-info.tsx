@@ -39,6 +39,7 @@ export default function UserInfo({
       if (liked && !isError) return 'green'
       if (!liked && !isError) return 'outline'
       if (isError) return 'danger'
+      return 'gray'
    }
    const date = format(new Date(createdAt), 'dd-MM-yyyy')
    return (

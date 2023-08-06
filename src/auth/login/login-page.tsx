@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { PasswordInput } from '../../shared/ui/input'
 
 export default function LoginPage() {
+   // @ts-ignore
    const methods = useForm<LoginFormInterface>({ resolver: yupResolver(schema) })
    const navigate = useNavigate()
    const { login, user } = useAuthStore()
